@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Phone Book</title>
+  <style>
+    input[type='submit'], button, [aria-label]{
+      cursor: pointer;
+    }
+    #spoiler{
+      display: none;
+    }
+    .form-control{
+        width: 40% !important;
+    }
+    .width_notes{
+        column-width: 250px;
+        overflow-wrap: break-word;
+    }
+	#cl{
+		display: none
+	}
+	.add{
+		float: left;
+		margin-right: 40px;
+	}
+	.head{
+		font-size: 35px !important;
+		margin-left: 35px !important;
+	}
+	p#counter {
+		font-size: 30px;
+	}
+  </style>
+</head>
+<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+<body>
+<div class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header ">
+            <a class="navbar-brand head">Phone Book</a>
+        </div>
+        
+    </div>    
+</div>
+<div class="container">
+	<form action="javascript:void(0);" method="POST" onsubmit="app.Add()"> 
+	  <input type="text" id="add-firstName" placeholder="First Name" class="form-control"><br>
+	  <input type="text" id="add-lastName" placeholder="Last Name" class="form-control"><br>
+	  <input type="number" id="add-phoneNumber" placeholder="Phone Number" class="form-control"><br>
+	  <input type="email" id="add-email" placeholder="Email Address" class="form-control"><br>
+	  <input type="text" id="add-streetaddress" placeholder="Street Address" class="form-control"><br>
+	  <textarea type="text" id="add-notes" placeholder="Notes" class="form-control"></textarea><br>
+	  <input type="submit" value="Add" class="btn btn-success add">
+	</form>
+
+	<div id="spoiler" role="aria-hidden" >
+	  <form action="javascript:void(0);" method="POST" id="saveEdit"><br>
+		<h3>Edit Item</h3>
+		<input type="text" id="edit-firstname" class="form-control"><br>
+		<input type="text" id="edit-lastname" class="form-control"><br>
+		<input type="number" id="edit-phonenumber" class="form-control"><br>
+		<input type="email" id="edit-email" class="form-control"><br>
+		<input type="text" id="edit-streetaddress" class="form-control"><br>
+		<textarea type="text" id="edit-notes" class="form-control"></textarea><br>
+		<input type="submit" value="Edit" class="btn btn-primary"/> <a onclick="CloseInput()" aria-label="Close">&#10006;</a>
+	  </form>
+	</div>
+
+	<p id="counter"></p>
+	<div id="cl">
+		<h2>Contact List</h2>
+		<input type="text" id="searchInput" class="form-control" onkeyup="searchFunction()" placeholder="Search">
+		<br>
+		<table id="info_table" class="table table-hover">
+		  <tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Phone Number</th>
+			<th>Email</th>
+			<th>Street Address</th>
+			<th>Notes</th>
+		  </tr>
+			<tbody id="FirstName">
+			</tbody>
+			<tbody id="LastName">
+			</tbody>
+			<tbody id="PhoneNumber">
+			</tbody>
+			<tbody id="Email">
+			</tbody>
+			<tbody id="StreetAddress">
+			</tbody> 
+			<tbody id="Notes">
+			</tbody>   
+		</table>
+	</div>
+</div>
+<script type="text/javascript" src="crud.js"></script>
+</body>
+</html>
